@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-text v-html</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>v-text v-html</h1>
+    <br>
+    <div id="app">
+       <span>{{text}}</span>===<span v-text="text"></span><br>
+       <span v-html="html"></span>
+    </div>
+    <script>
+        var app = new Vue({
+            el:'#app',
+            data:{
+               text:"Hello",
+               html:"<h2>World</h2>"
+            }
+        })
+    </script>
+</body>
+</html>

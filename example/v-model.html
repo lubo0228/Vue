@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-model</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>v-model</h1>
+    <br>
+    <div id="app">
+        v-model:{{message}}<br>
+        v-model.lazy:<input type="text" v-model.lazy="message"><br>
+        v-model.number:<input type="text" v-model.number="message"><br>
+        v-model.trim:<input type="text" v-model.trim="message"><br>
+        <textarea v-model="message"></textarea><br>
+        <input id="isTrue" type="checkbox" v-model="isTrue">
+        <label for="isTrue">{{isTrue}}</label><br>
+        <input id="zs" type="checkbox" value="张三" v-model="people">
+        <label for="zs">张三</label>
+        <input id="ls" type="checkbox" value="李四" v-model="people">
+        <label for="ls">李四</label>
+        <input id="ww" type="checkbox" value="王五" v-model="people">
+        <label for="ww">王五</label><br>
+        people:{{people}}<br>
+        <input type="radio" id="man" value="男" v-model="sex">
+        <label for="man">男</label>
+        <input type="radio" id="woman" value="女" v-model="sex">
+        <label for="woman">女</label><br>
+        sex:{{sex}}
+    </div>
+    <script>
+        var app = new Vue({
+            el:'#app',
+            data:{
+                message:'hello-world',
+                isTrue:true,
+                people:[],
+                sex:'男'
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-on</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>v-on</h1>
+    <br>
+    <div id="app">
+        当前分数：{{point}}<br>
+        <button v-on:click="plus">加分</button>
+        <button @click="minus">减分</button>
+        <input type="text" v-on:keyup.13="enter" v-model="point2">
+    </div>
+    <script>
+        var app = new Vue({
+            el:'#app',
+            data:{
+                point:0,
+                point2:1
+            },
+            methods:{
+                plus:function(){
+                    this.point++
+                },
+                minus:function(){
+                    this.point--
+                },
+                enter:function(){
+                    this.point=this.point + parseInt(this.point2)
+                }
+            }
+        })
+    </script>
+</body>
+</html>

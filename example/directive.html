@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue.directive</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>hello-world</h1>
+    <br>
+    <div id="app">
+        <div v-lubo="color">{{point}}</div><br>
+        <div><button @click="add">ADD</button></div>
+    </div>
+    <script>
+        Vue.directive('lubo',
+            // function(el,binding,vnode)
+            {
+            // console.log(el);
+            // console.log(binding);
+            // console.log(vnode);
+            // el.style='color:'+binding.value;
+            bind:function(){//被绑定
+                console.log('1 - bind');
+            },
+            inserted:function(){//绑定到节点
+                console.log('2 - inserted');
+            },
+            update:function(){//组件更新
+                console.log('3 - update');
+            },
+            componentUpdated:function(){//组件更新完成
+                console.log('4 - componentUpdated');
+            },
+            unbind:function(){//解绑
+                console.log('1 - bind');
+            }
+        });
+        var app = new Vue({
+            el:'#app',
+            data:{
+                point : 1,
+                color : 'red'
+            },
+            methods:{
+                add:function(){
+                    this.point++
+                },
+            }
+        })
+    </script>
+</body>
+</html>

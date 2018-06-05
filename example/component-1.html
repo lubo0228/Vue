@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>component-1</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>component-1</h1>
+    <br>
+    <div id="app">
+        <!-- <lubo></lubo> -->
+        <panda></panda>
+    </div>
+    <script>
+        //注册全局组件
+        // Vue.component('lubo',{
+        //     template:`<div style="color:red;">全局化注册的lubo标签</div>`
+        // })
+
+        var app = new Vue({
+            el:'#app',
+            components:{
+                "panda":{
+                    template:`<div style="color:red;">局部注册的panda标签</div>`
+                }
+            }
+        })
+    </script>
+</body>
+</html>

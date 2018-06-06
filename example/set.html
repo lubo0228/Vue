@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hello-world</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>hello-world</h1>
+    <br>
+    <div id="app">
+        {{count}}<br>
+        <button onclick="add()">ADD</button>
+    </div>
+    <script>
+        function add(){
+            // app.arr[1] = 'ddd';
+            Vue.set(app.arr,1,'ddd');
+            console.log(app.arr);
+        }
+        var outData = {
+            count : 1,
+            goods : 'car',    
+            arr : ['aaa','bbb','ccc']    
+        };
+        var app = new Vue({
+            el:'#app',
+            data:outData
+        })
+    </script>
+</body>
+</html>

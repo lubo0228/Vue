@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hello-world</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>hello-world</h1>
+    <br>
+    <div id="app">
+        <author></author>
+        <div id="author"></div>
+    </div>
+    <script>
+        var authorExtend = Vue.extend({
+            template:"<p><a :href='authorUrl'>{{authorName}}</a></p>",
+            data:function(){
+            return{
+                authorName:'JSPang',
+                authorUrl:'http://www.jspang.com'
+                }
+            }
+        });
+        new authorExtend().$mount('author');
+        new authorExtend().$mount('#author');
+    </script>
+</body>
+</html>

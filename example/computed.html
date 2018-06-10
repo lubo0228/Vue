@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>computed</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>computed</h1>
+    <br>
+    <div id="app">
+       <p>{{newPrice}}</p> 
+       <ul>
+           <li v-for="item in newNewsList">{{item.title}} - {{item.sort}}</li>
+       </ul>
+    </div>
+    <script>
+        var newsList = [
+                {title:'title1',sort:'1'},
+                {title:'title2',sort:'2'},
+                {title:'title3',sort:'3'},
+                {title:'title4',sort:'4'},
+            ];
+
+        var app = new Vue({
+            el:'#app',
+            data:{
+                price:100,
+                newsList:newsList
+            },
+            computed:{
+                newPrice : function(){
+                    return "$" + this.price;
+                },
+                newNewsList : function(){
+                    return this.newsList.reverse();
+                }
+            }
+        })
+    </script>
+</body>
+</html>

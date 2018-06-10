@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>component-3</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>component-3</h1>
+    <br>
+    <div id="app">
+        <lubo></lubo><br>
+        <panda></panda>
+    </div>
+    <script>
+        //注册全局组件
+        // Vue.component('lubo',{
+        //     template:`<div style="color:red;">全局化注册的lubo标签</div>`
+        // })
+        var panda = {template :`<div style="color:red;">Panda From China</div>`};
+        var city = {template :`<div>Sichuan of China</div>`};
+        var lubo = {template:`<div>
+                                <p> Panda from China!</p>
+                                <city></city>
+                              </div>`,
+                    components:{
+                    "city":city,
+                    }};
+
+        var app = new Vue({
+            el:'#app',
+            data:{
+                message : 'SiChuan'
+            },
+            components:{
+                "panda":panda,
+                "lubo":lubo,
+            }
+        })
+    </script>
+</body>
+</html> 

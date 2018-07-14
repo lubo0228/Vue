@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>example01</title>
+    <script src="../assets/js/vue.js"></script>
+    <script src="../assets/js/jquery-3.3.1.min.js"></script>
+</head>
+
+<body>
+    <h1>example01</h1>
+    <br>
+    <div id="app">
+        {{message}}
+    </div>
+    <p>
+        <button onclick="destroy()">卸载</button>
+        <button onclick="updated()">更新</button>
+        <button onclick="tick()">数据修改</button>
+    </p>
+    <script>
+        var lubo = Vue.extend({
+            template: `<p>{{message}}</p>`,
+            data: function () {
+                return {
+                    message: 'I am lubo'
+                }
+            },
+            mounted: function () {
+                console.log('mounted')
+            },
+            destroyed: function () {
+                console.log('destroyed')
+            },
+            updated: function () {
+                console.log('updated')
+            }
+        });
+
+        var vm = new lubo().$mount("#app");
+
+        //卸载
+        function destroy() {
+            vm.$destroy();
+        }
+        //更新
+        function updated() {
+            vm.$forceUpdate()
+        }
+        //数据修改
+        function tick() {
+            vm.message = "update message info ";
+            vm.$nextTick(function () {
+                console.log('message更新完后我被调用了');
+            })
+        }
+    </script>
+</body>
+
+</html>

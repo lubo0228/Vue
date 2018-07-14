@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+    <title>Slot content extend Demo</title>
+</head>
+
+<body>
+    <h1>Slot content extend Demo</h1>
+    <hr>
+    <div id="app">
+        <!-- 在HTML的组件中用slot属性传递值 -->
+        <lubo>
+            <span slot="netName">{{luboData.netName}}</span>
+            <span slot="skill">{{luboData.skill}}</span>
+        </lubo>
+    </div>
+
+    <!-- 在组件模板中用<slot></slot>标签接收值 -->
+    <template id="tmp">
+        <div>
+            <p>网名：
+                <slot name="netName"></slot>
+            </p>
+            <p>技术类型：
+                <slot name="skill"></slot>
+            </p>
+
+        </div>
+    </template>
+
+    <script type="text/javascript">
+        var lubo = {
+            template: '#tmp'
+        }
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+                luboData: {
+                    netName: 'lubo',
+                    skill: 'Web前端'
+                }
+            },
+            components: {
+                "lubo": lubo
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <title>classBind</title>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+
+
+<div id="app">
+  <!--<div v-bind:class="{ active: isActive }"></div>-->
+  <div  v-bind:class='{ active:isActive }'>对象设置类名</div>
+</div>
+<div>XXX</div>
+
+<script>
+
+  var app = new Vue({
+    el: '#app',
+    data: {
+      isActive: true,
+      isClr: true,
+    }
+  })
+
+
+</script>
+<style>
+  .active {
+    width: 100px;
+    height: 100px;
+    background: green;
+  }
+
+  .clr {
+    background-color: pink;
+  }
+</style>
+</body>
+
+</html>

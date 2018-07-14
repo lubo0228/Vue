@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>example03</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+
+<body>
+    <h1>example03</h1>
+    <br>
+    <div id="app">
+        {{ price }}
+        <p>
+            <button @click="add(1)">ADD</button>
+        </p>
+    </div>
+    <p><button onclick="reduce()">reduce</button></p>
+    <p><button onclick="reduceOnce()">reduceOnce</button></p>
+    <p><button onclick="off()">off</button></p>
+
+    <script>
+        var btn = {
+            template: `<p><button>组件ADD</button></p>`
+        };
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+                price: 1
+            },
+            components: {
+                "btn": btn
+            },
+            methods: {
+                add: function (num) {
+                    if (num == '') {
+                        this.price++;
+                    } else {
+                        this.price += num;
+                    }
+                }
+            }
+        })
+
+        app.$on('reduce', function () {
+            console.log('执行了reduce()');
+            this.num--;
+        });
+
+        //只执行一次的方法
+        app.$once('reduceOnce', function () {
+            console.log('只执行一次的方法');
+            this.num--;
+        });
+
+        // 外部调用内部事件
+        function reduce() {
+            app.$emit('reduce');
+        }
+
+        function reduceOnce() {
+            app.$emit('reduceOnce');
+        }
+
+        //$off关闭事件
+        function off() {
+            app.$off('reduce');
+        }
+    </script>
+</body>
+
+</html>
